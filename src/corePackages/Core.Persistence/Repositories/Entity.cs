@@ -1,6 +1,6 @@
 ﻿namespace Core.Persistence.Repositories;
 
-public class Entity
+public class Entity  //Veritabanı nesnesi olduğunu belirtmek için kullanıyoruz
 {
     public int Id { get; set; }
 

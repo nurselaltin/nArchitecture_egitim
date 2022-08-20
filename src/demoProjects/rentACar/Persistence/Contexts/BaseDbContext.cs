@@ -1,15 +1,10 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Contexts
 {
-    public class BaseDbContext : DbContext
+    public class BaseDbContext : DbContext  //Db ile bağlantı kurduğumuz kısım
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -36,12 +31,9 @@ namespace Persistence.Contexts
                 a.Property(p => p.Name).HasColumnName("Name");
             });
 
+             Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes")};
+             modelBuilder.Entity<Brand>().HasData(brandEntitySeeds);
 
-
-            Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes") };
-            modelBuilder.Entity<Brand>().HasData(brandEntitySeeds);
-
-           
         }
     }
 }
